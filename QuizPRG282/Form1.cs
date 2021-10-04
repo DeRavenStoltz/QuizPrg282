@@ -16,5 +16,31 @@ namespace QuizPRG282
         {
             InitializeComponent();
         }
+        
+         private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(AppContext.BaseDirectory);
+            List<string[]> l = new List<string[]>();
+            string txt;
+           using (StreamReader reader = new StreamReader(AppContext.BaseDirectory + @"Test.txt"))
+            {
+                while ( (txt=reader.ReadLine())!=null)
+                {
+                    
+                    l.Add(txt.Split(','));
+                    
+                }
+                
+            }
+            foreach (var line in l)
+            {
+                string temp="";
+                foreach (var info in line)
+                {
+                    temp += info;
+                }
+                listBox1.Items.Add(temp);
+            }
+        }
     }
 }
